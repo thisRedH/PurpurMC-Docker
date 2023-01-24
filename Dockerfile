@@ -6,7 +6,6 @@ ENV MC_VERSION 1.19.2
 ENV MC_EULA true
 ENV MC_RAM_XMS 1536M
 ENV MC_RAM_XMX 2048M
-ENV MC_URL_ZIP_SERVER_FIILES https://www.learningcontainer.com/download/sample-zip-files/?wpdmdl=1637&refresh=63b94b59702e41673087833
 
 VOLUME /home/server
 
