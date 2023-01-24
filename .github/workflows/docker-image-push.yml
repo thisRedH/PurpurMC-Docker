@@ -18,7 +18,7 @@ jobs:
       run: docker login -u thisredh -p "${{ secrets.PASSW }}"
     
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag thisredh/purpurmc:${{ inputs.version }}
+      run: docker build . --file Dockerfile --tag thisredh/purpurmc:latest --tag thisredh/purpurmc:${{ inputs.version }}
 
     - name: Push the Docker image to Docker hub
       run: docker push thisredh/purpurmc:${{ inputs.version }}
