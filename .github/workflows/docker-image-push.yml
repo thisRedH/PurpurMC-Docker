@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Login to Docker hub
-      run: docker login -u thisredh -p "${{ secrets.PASSW }}" hub.docker.com/r/thisredh/purpurmc
+      run: docker login -u thisredh -p "${{ secrets.PASSW }}"
     
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag thisredh/purpurmc:${{ inputs.version }}
