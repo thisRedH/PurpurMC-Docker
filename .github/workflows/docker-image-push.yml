@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version of the release'
+        required: true
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag thisredh/purpurmc:${{ inputs.version }}
+
+    - name: Push the Docker image to Docker hub
+      run: docker push thisredh/purpurmc:${{ inputs.version }}
