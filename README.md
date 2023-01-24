@@ -1,6 +1,6 @@
 # PurpurMC-Docker
 
-Docker image running PurpurMC/Purpur
+Docker image running [PurpurMC](https://github.com/PurpurMC/Purpur)
 
 ## Usage
 
