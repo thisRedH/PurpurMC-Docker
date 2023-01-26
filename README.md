@@ -31,5 +31,4 @@ All of the Environment Variables:
 
 ---
 
-[GitHub](https://github.com/thisRedH/PurpurMC-Docker)&nbsp;
 [Docker Hub](https://hub.docker.com/r/thisredh/purpurmc)
