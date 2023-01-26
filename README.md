@@ -28,3 +28,8 @@ All of the Environment Variables:
 ## Todo
 
 - [ ] Plugin support
+
+---
+
+[GitHub](https://github.com/thisRedH/PurpurMC-Docker)&nbsp;
+[Docker Hub](https://hub.docker.com/r/thisredh/purpurmc)
