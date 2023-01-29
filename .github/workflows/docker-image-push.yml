@@ -9,7 +9,9 @@ on:
       dev:
         description: "Dev release"
         required: true
-        choices: ["false", "true"]
+        options:
+          - true
+          - false
 
 jobs:
   docker:
