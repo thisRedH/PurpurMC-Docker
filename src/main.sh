@@ -42,7 +42,7 @@ else
 fi
 
 # cleaning jars that are not needed
-find $MCDIR -type f -name "*.jar" | grep -v $MCJAR | xargs rm
+find $MCDIR -type f -name "*.jar" ! -name $MCJAR -exec rm {} +
 
 # accepting EULA
 if [ "$MC_EULA" == "true" ]; then
