@@ -30,7 +30,7 @@ function GetFile {
 
 # Download the file even if it exits with "curl -C -" to be sure that it is complete
 [ ! -e $MCJAR ] && echo "Downloading Purpur jar..."
-GetFile $MCJAR "https://api.purpurmc.org/v2/purpur/$MC_VERSION/latest/download"
+GetFile "https://api.purpurmc.org/v2/purpur/$MC_VERSION/latest/download" $MCJAR
 
 # Cleaning jars that are not needed
 find $MCDIR -type f -name "*.jar" ! -name $MCJAR -exec rm {} +
