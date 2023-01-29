@@ -5,7 +5,7 @@ Docker image running [PurpurMC](https://github.com/PurpurMC/Purpur)
 ## Usage
 
 ```bash
-$ docker run -d \
+$ sudo docker run -d \
     -v minecraft:/home/server \
     -p 25565:25565 \
     thisredh/purpurmc
