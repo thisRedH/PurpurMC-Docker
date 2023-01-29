@@ -15,7 +15,8 @@ WORKDIR /home/server
 COPY src/main.sh /main.sh
 
 RUN microdnf install -y epel-release &&\
-    microdnf install -y unar
+    microdnf install -y unar &&\
+    microdnf install -y findutils
 
 RUN chmod +x /main.sh
 
