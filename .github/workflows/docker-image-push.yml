@@ -12,8 +12,8 @@ on:
         default: "false"
         type: choice
         options:
-          - true
           - false
+          - true
 
 jobs:
   docker:
@@ -26,7 +26,12 @@ jobs:
       run: docker login -u thisredh -p "${{ secrets.PASSW }}"
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag thisredh/purpurmc:latest --tag thisredh/purpurmc:${{ inputs.version }}
+      run: |
+        if [ "${{ inputs.dev }}" == "false" ]; then
+          docker build . --file Dockerfile --tag thisredh/purpurmc:latest --tag thisredh/purpurmc:${{ inputs.version }}
+        else
+          docker build . --file Dockerfile --tag thisredh/purpurmc:test_${{ inputs.version }}
+        fi
 
     - name: Push the Docker image to Docker hub
       run: |
