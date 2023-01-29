@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image Push
 
 on:
   workflow_dispatch:
@@ -6,6 +6,10 @@ on:
       version:
         description: 'Version of the release'
         required: true
+      dev:
+        description: "Dev release"
+        required: true
+        choices: ["false", "true"]
 
 jobs:
   docker:
@@ -13,14 +17,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Login to Docker hub
       run: docker login -u thisredh -p "${{ secrets.PASSW }}"
-    
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag thisredh/purpurmc:latest --tag thisredh/purpurmc:${{ inputs.version }}
 
     - name: Push the Docker image to Docker hub
       run: |
-        docker push thisredh/purpurmc:latest
-        docker push thisredh/purpurmc:${{ inputs.version }}
+        if [ "${{ inputs.dev }}" == "false" ]; then
+          docker push thisredh/purpurmc:latest
+          docker push thisredh/purpurmc:${{ inputs.version }}
+        else
+          docker push thisredh/purpurmc:test_${{ inputs.version }}
+        fi
