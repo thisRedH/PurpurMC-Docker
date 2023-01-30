@@ -27,7 +27,6 @@ All of the Environment Variables:
 
 ## Todo
 
-- [ ] Showing server log
 - [ ] Plugin support
 
 ---
