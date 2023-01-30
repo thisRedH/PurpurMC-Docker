@@ -60,6 +60,6 @@ echo
 
 # Starting the server
 mkfifo minecraft_server_pipe                                # Making a pipe for IO to the Java Process
-trap "echo 'stop' > input_pipe; rm input_pipe;" SIGTERM     # Trap SIGTERM and send 'stop' to the Server
+trap "echo 'stop' > input_pipe; rm input_pipe; exit" SIGTERM     # Trap SIGTERM and send 'stop' to the Server
 
 java $MCARGS < minecraft_server_pipe                        # Starting Java with ARG's with a pipe to send 'stop' to it
