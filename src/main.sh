@@ -33,7 +33,7 @@ function GetFile {
 GetFile "https://api.purpurmc.org/v2/purpur/$MC_VERSION/latest/download" $MCJAR
 
 # Cleaning jars that are not needed
-find $MCDIR -type f -name "*.jar" ! -name $MCJAR -exec rm {} +
+find "$MCDIR" -maxdepth 1 -type f -name "*.jar" ! -wholename "$MCJAR" -delete
 
 # Getting Server files from user
 GetFile "$MC_URL_ZIP_SERVER_FIILES" "$MCDIR/ZIP_SERVER_FILES"
