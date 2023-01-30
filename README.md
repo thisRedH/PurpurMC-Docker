@@ -27,7 +27,7 @@ All of the Environment Variables:
 
 ## Todo
 
-- [ ] Saving when docker stop gets called
+- [ ] Showing server log
 - [ ] Plugin support
 
 ---
