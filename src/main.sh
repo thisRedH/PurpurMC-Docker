@@ -54,8 +54,14 @@ echo " MC_POST_JAR_ARGS: $MC_POST_JAR_ARGS"
 echo " MC_URL_ZIP_SERVER_FIILES: $MC_URL_ZIP_SERVER_FIILES"
 echo "###############################################"
 echo
-
-# Starting the server
 echo "Start command: java $MCARGS"
 echo "Starting Server..."
-java $MCARGS
+echo
+
+mkfifo minecraft_server_pipe                                # Making a pipe for IO to the Java Process
+java $MCARGS < minecraft_server_pipe &                      # Starting Java with ARG's and a pipe in the backround
+minecraft_server_pid=$!                                     # Getting the Process ID from the Server
+
+trap "echo 'stop' > input_pipe; rm input_pipe;" SIGTERM     # Trap SIGTERM and send stop to the Server
+
+wait $minecraft_server_pid                                  # Wait for the Java process to finish
