@@ -17,7 +17,7 @@ All of the Environment Variables:
 
 | Variable | Value | Description |
 | - | - | - |
-| MC_VERSION | `1.19.2` | The Minecraft version to use |
+| MC_VERSION | `1.20.1` | The Minecraft version to use |
 | MC_EULA | `true` | Accepting the [EULA](https://account.mojang.com/documents/minecraft_eula) |
 | MC_RAM_XMS | `1536M` | Preallocated RAM (for Purpur) |
 | MC_RAM_XMX | `2048M` | Max RAM (for Purpur) |
