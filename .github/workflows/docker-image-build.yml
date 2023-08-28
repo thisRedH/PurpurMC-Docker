@@ -19,14 +19,15 @@ on:
     paths-ignore: 
       '.github'
 
+env:
+  TAG: thisredh/purpurmc
+  TEST_VER: build_test
+  LATEST_VER: latest
+
 jobs:
   docker:
     runs-on: ubuntu-latest
 
-    env:
-      TAG: thisredh/purpurmc
-      TEST_VER: build_test
-      LATEST_VER: latest
 
     steps:
     - name: Checkout
