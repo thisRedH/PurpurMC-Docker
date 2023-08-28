@@ -4,17 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       rel_type:
-        type: choice
-        required: true
         description: 'Release type'
+        required: true
+        default: build_no_release
+        type: choice
         options:
-          - build_no_push
+          - build_no_release
           - dockerhub
-
       push_ver:
-        required: false
         description: 'Version to Push'
-      
+        required: false
   push:
     paths-ignore: 
       '.github'
