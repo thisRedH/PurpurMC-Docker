@@ -25,10 +25,6 @@ All of the Environment Variables:
 | MC_POST_JAR_ARGS | `<ARGS>` | Purpur Arg's (for experienced User's only) |
 | MC_URL_ZIP_SERVER_FIILES | `<URL to archive(zip, rar, tar, ...)>` | Import files from another Server or Import Config's/Plugin's (for experienced User's only) |
 
-## Todo
-
-- [ ] Plugin support
-
 ---
 
 [Docker Hub](https://hub.docker.com/r/thisredh/purpurmc)
