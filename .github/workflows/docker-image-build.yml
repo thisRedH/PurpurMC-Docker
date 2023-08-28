@@ -52,7 +52,7 @@ jobs:
         load: true
         tags: '${{ env.TAG }}:${{ env.TEST_VER }}' 
 
-    - if: ${{ (inputs.push_ver == 'dockerhub') }}
+    - if: ${{ (inputs.push_ver != '') }}
       name: Push to Docker Hub
       uses: docker/build-push-action@v4
       with:
