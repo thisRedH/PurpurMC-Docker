@@ -16,7 +16,8 @@ on:
         required: false
   push:
     paths-ignore: 
-      '.github'
+      - '.github'
+      - '**.md'
 
 env:
   TAG: thisredh/purpurmc
