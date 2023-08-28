@@ -1,0 +1,63 @@
+name: Docker Image Building
+
+on:
+  workflow_dispatch:
+    inputs:
+      rel_type:
+        type: choice
+        required: true
+        description: 'Release type'
+        options:
+          - build_no_push
+          - dockerhub
+
+      push_ver:
+        required: false
+        description: 'Version to Push'
+      
+  push:
+    paths-ignore: 
+      '.github'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    env:
+      TAG: thisredh/purpurmc
+      TEST_VER: build_test
+      LATEST_VER: latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USER }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+  
+    - name: Build Image
+      uses: docker/build-push-action@v4
+      with:
+        load: true
+        tags: '$TAG:$TEST_VER' 
+
+    - if: ${{ (inputs.push_ver == 'dockerhub') }}
+      name: Push to Docker Hub
+      uses: docker/build-push-action@v4
+      with:
+        platforms: linux/amd64, linux/arm64
+        push: true
+        tags: |
+          '$TAG:$LATEST_VER'
+          '$TAG:${{ inputs.push_ver }}'
